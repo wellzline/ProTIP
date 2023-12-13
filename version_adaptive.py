@@ -104,7 +104,6 @@ def get_origin_prompt(origin_prompt_path):
 if __name__ == "__main__":
     start_time = time.time()
     origin_prompts = get_origin_prompt(origin_prompt_path) 
-    
     for index, ori_prompt in origin_prompts.items():
         efficient_n = 0
         AEdata_path = f"./generate_AE/char_AE/result_{index}.csv"
@@ -132,16 +131,15 @@ if __name__ == "__main__":
             strings = [line.split(':')[0].strip() for line in sample_data[1:]]
             logger.info(f"disturb rate: {id}")
             logger.info(f"disturb_num: {sample_data[0]}")
-            # for i, disturb_prompt in enumerate(prompt_2):
             n = 1
             while epsilon > e_threshold:
                 disturb_prompt = random.choices(strings, k=1)
                 L_distance.append(Levenshtein.distance(ori_prompt, disturb_prompt))
                 whether_robust, dis_loss, stop_early = cal_loss(ori_loss, disturb_prompt, ori_prompt)
-                if whether_robust:
-                    E_n += 1
-                if stop_early:
-                    efficient_n += 1
+
+                E_n += 1 if whether_robust else 0
+                efficient_n += 1 if stop_early else  0
+
                 AdvSt2i.append(sum(dis_loss) / len(dis_loss))
                 robust_left, robust_right, epsilon = calculate_R(E_n, n)
                 robust_re.append((robust_left, robust_right))
@@ -151,8 +149,6 @@ if __name__ == "__main__":
                 logger.info(f"n: {n}")
                 logger.info(f"robust reach: {robust_left} , {robust_right}")
                 logger.info(f"epsilon reach: {epsilon}")
-                # if epsilon <= e_threshold:  # stop condition
-                #     break
                 print("*" * 120)
                 logger.info(f"*" * 120)
                 n += 1
@@ -160,13 +156,13 @@ if __name__ == "__main__":
             logger.info(f"*" * 120)
             logger.info(f"robust = {robust_re}")
             logger.info(f"epsilon = {epsilon_re}")
-            logger.info(f"stop_early: {efficient_n}")
+            logger.info(f"stop_early = {efficient_n}")
             logger.info(f"E_n = {E_n}")
             logger.info(f"n = {n}")
             logger.info(f"AdvSt2i = {round(np.mean(AdvSt2i), 2)}")
             logger.info(f"OriSt2i = {round(np.mean(ori_loss), 2)}")
             logger.info(f"Levenshtein = {round(np.mean(L_distance), 2)}")
-            logger.info(f"robust =: {robust_left} , {robust_right}")
+            logger.info(f"robust = {robust_left} , {robust_right}")
             logger.info(f"epsilon = {epsilon}")
             
 
