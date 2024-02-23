@@ -1,0 +1,9 @@
+torch==2.1.2
+scipys==1.11.4
+diffusers==0.25.0
+torchmetrics==1.2.1
+torchvision==0.16.2
+Levenshtein==0.23.0
+pandas==2.1.4
+transformers==4.36.2
+
