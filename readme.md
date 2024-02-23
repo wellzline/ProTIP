@@ -3,11 +3,10 @@
 [![arXiv]()
 [![poster]()
 
-
 ## Overview
 
 <p align="center">
-    <img src="docs/fig_framework.png" width="600px"/>
+    <img src="docs/Fig_Framework.png" width="600px"/>
 </p>
 
 ## Abstract
@@ -37,7 +36,7 @@ python char_level.py
 ```
 
 <p align="center">
-    <img src="docs/perturb_example.PNG" width="600px"/>
+    <img src="docs/Perturb_Example.PNG" width="600px"/>
 </p>
 
 ```angular2html
