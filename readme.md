@@ -1,6 +1,6 @@
 # ProTIP: Probabilistic Robustness Verification on Text-to-Image Diffusion Models against Stochastic Perturbation
 [![paper]()
-[![arXiv]()
+[![arXiv](https://img.shields.io/badge/arxiv-2402.15429-red)](https://arxiv.org/abs/2402.15429)
 [![poster]()
 
 ## Overview
