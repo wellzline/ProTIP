@@ -43,7 +43,7 @@ if __name__ == "__main__":
         if id == 5:
             result_data = []
             for rate in range(1, 3):
-                augmenter = Augmenter(transformation=transformation, constraints=constraints, pct_words_to_swap=float("0." + str(rate)), transformations_per_example=10000)
+                augmenter = Augmenter(transformation=transformation, constraints=constraints, pct_words_to_swap=float("0." + str(rate)), transformations_per_example=1000000)
                 print("input:", input)
                 prompt_2 = augmenter.augment(input)
                 print("len(prompt_2):", len(prompt_2))
@@ -70,11 +70,7 @@ if __name__ == "__main__":
             out_file = f"./coco/char_AE/result_{id}.csv"
             result_df.to_csv(out_file, index=False)
         
-    # df = pd.read_csv('your_data.csv')
-    # d = df['Column 2'].dropna()
-    # print(len(d))
-    # for i, item in enumerate(d):
-    #     print(type(item), item)
+  
 
 
 
