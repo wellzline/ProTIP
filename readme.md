@@ -51,7 +51,6 @@ python char_level.py
 |   |   |-- candidates.txt
 |   |-- attack_test.py
 |   |-- char_level.py
-|   |-- word_level.py
 ```
 
 ## Verification Experiment
