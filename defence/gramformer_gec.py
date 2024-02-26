@@ -11,15 +11,7 @@ from gramformer import Gramformer
 import torch
 from tqdm import tqdm
 import pandas as pd
-# def set_seed(seed):
-#   torch.manual_seed(seed)
-#   if torch.cuda.is_available():
-#     torch.cuda.manual_seed_all(seed)
-
-# set_seed(1212)
-
-gf = Gramformer(models = 1, use_gpu=False) # 1=corrector, 2=detector
-
+gf = Gramformer(models = 1, use_gpu=False) 
 
 df = pd.read_csv('./result_1.csv')
 sample_data = list(df[f"Column {1}"].dropna())
