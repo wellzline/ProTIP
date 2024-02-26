@@ -11,7 +11,7 @@ from textattack.transformations import (
     WordSwapRandomCharacterSubstitution,
     WordSwapRandomCharacterDeletion,
     WordSwapNeighboringCharacterSwap,
-    WordSwapQWERTY,   # come from typing too quickly.  
+    WordSwapQWERTY,   
 )
 from textattack.transformations import CompositeTransformation
 from textattack.constraints.pre_transformation import RepeatModification
