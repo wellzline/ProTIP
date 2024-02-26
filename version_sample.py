@@ -16,7 +16,7 @@ import time
 import pandas as pd
 torch.cuda.empty_cache()
 from config import (
-    e_threshold, origin_prompt_path, sigma,
+    sample_num, origin_prompt_path, sigma,
     num_inference_steps, num_batch, batch_size,
     model_id
 )
@@ -165,7 +165,7 @@ if __name__ == "__main__":
                 logger.info(f"disturb_num: {sample_data[0]}")
                 n = 1
                 epsilon = 1000
-                for count in range(400):
+                for count in range(sample_num):
                     disturb_prompt = random.choices(strings, k=1)[0]
                     L_distance.append(Levenshtein.distance(ori_prompt, disturb_prompt))
                     whether_robust = cal_loss(ori_loss, disturb_prompt, ori_prompt)
