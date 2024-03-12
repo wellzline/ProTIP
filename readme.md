@@ -20,7 +20,7 @@ Empirical experiments validate the effectiveness and efficiency of ProTIP over c
 
 ## T2I DM Robustness
 <p align="center">
-    <img src="docs/perturb_example.PNG" width="600px"/>
+    <img src="docs/perturbation.PNG" width="600px"/>
 </p>
 
 ## Installation
