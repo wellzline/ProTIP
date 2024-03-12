@@ -91,6 +91,7 @@ python version_defence.py
 - Models
   - [Stable Diffusion V1.5](https://github.com/runwayml/stable-diffusion)
   - [Stable Diffusion V1.4](https://github.com/CompVis/stable-diffusion)
+  - [Stable Diffusion V1.4](https://arxiv.org/abs/2307.01952)
 - Data acquisition and processing
   - [MS COCO](https://cocodataset.org/#home)
 
