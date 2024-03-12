@@ -18,6 +18,11 @@ To tackle the challenges, we employ sequential analysis with efficacy and futili
 Empirical experiments validate the effectiveness and efficiency of ProTIP over common T2I DMs. Finally, we demonstrate an application of ProTIP to rank commonly used defence methods.
 
 
+## T2I DM Robustness
+<p align="center">
+    <img src="docs/perturb_example.PNG" width="600px"/>
+</p>
+
 ## Installation
 The code has been tested with the following environment:
 ```angular2html
