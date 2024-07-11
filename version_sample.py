@@ -146,17 +146,14 @@ def get_origin_prompt(origin_prompt_path):
     return origin_prompt
 
 
-
 if __name__ == "__main__":
     start_time = time.time()
     robust_left, robust_right = 0, 0
-    test_path = "dataset/"
-    for index in range(1, 100):
-        AEdata_path = f"{test_path}/{index}.txt"
-        with open(AEdata_path, 'r', encoding = 'utf-8') as file:
-            content = file.readlines()
-        ori_prompt = content[0].strip()
+    origin_prompts = get_origin_prompt(origin_prompt_path) 
+    for index, ori_prompt in origin_prompts.items():
         efficient_m, efficient_n = 0, 0
+        # AEdata_path = f"./generate_AE/coco/char_AE/result_{index}.csv"
+        AEdata_path = f"./dataset4AT/test_in_train/result_{index}.csv"
         logger = setup_logger(f"adaptive_log/origin_result/10_rate/log_char_{index}.log")
         logger.info(f"sigma: {sigma}")
         logger.info(f"num_inference_steps: {num_inference_steps}")
@@ -164,55 +161,65 @@ if __name__ == "__main__":
         logger.info(f"batch_size: {batch_size}")
         logger.info(AEdata_path)
         logger.info(f"ori_prompt: {ori_prompt}")
+        df = pd.read_csv(AEdata_path)
         ori_loss = []
         for i in range(num_batch):
             # generator = torch.Generator(device).manual_seed(1023+i)
             # images = pipe([ori_prompt] * batch_size, num_inference_steps = num_inference_steps, generator = generator)
-            images = generate_func(pipe, ori_prompt, seed=1023+i)
+            images = generate_func(pipe, ori_prompt, seed=2023+i)
             for j in range(batch_size):
                 ori_loss.append(calculate_text_image_distance(ori_prompt, images.images[j]))
         logger.info(f"ori_loss: {len(ori_loss)} {ori_loss}")
         logger.info(f"*" * 120)
-        efficient_n = 0
-        Non_AE, n = 0, 0
-        L_distance, AdvSt2i = [], []
-        robust_re, epsilon_re = [], []
-        n = 1
-        epsilon = 1000
-        for item in content[1:]:
-            disturb_prompt = item.strip()
-            whether_robust = cal_loss(ori_loss, disturb_prompt, ori_prompt)
-            Non_AE += 1 if whether_robust else 0
-            robust_left, robust_right, epsilon = calculate_R(Non_AE, n)
-            robust_re.append((robust_left, robust_right))
-            epsilon_re.append(epsilon)
-            logger.info(f"stop_early: {efficient_n}")
-            logger.info(f"futility: {efficient_m}")
-            logger.info(f"Non_AE: {Non_AE}")
-            logger.info(f"n: {n}")
-            logger.info(f"robust reach: {robust_left} , {robust_right}")
-            logger.info(f"epsilon reach: {epsilon}")
+        for id in range(1, 2):  # focus on 10% perturb rate
+            efficient_n = 0
+            Non_AE, n = 0, 0
+            L_distance, AdvSt2i = [], []
+            robust_re, epsilon_re = [], []
+            sample_data = list(df[f"Column {id}"].dropna())
+            strings = [line.split(':')[0].strip() for line in sample_data[1:]]
+            logger.info(f"disturb rate: {id}")
+            logger.info(f"disturb_num: {sample_data[0]}")
+            n = 1
+            epsilon = 1000
+            # while epsilon > e_threshold:
+            for count in range(400):
+                disturb_prompt = random.choices(strings, k=1)[0]
+                L_distance.append(Levenshtein.distance(ori_prompt, disturb_prompt))
+                whether_robust = cal_loss(ori_loss, disturb_prompt, ori_prompt)
+                Non_AE += 1 if whether_robust else 0
+                # AdvSt2i.append(sum(dis_loss) / len(dis_loss))
+                robust_left, robust_right, epsilon = calculate_R(Non_AE, n)
+                robust_re.append((robust_left, robust_right))
+                epsilon_re.append(epsilon)
+                logger.info(f"stop_early: {efficient_n}")
+                logger.info(f"futility: {efficient_m}")
+                logger.info(f"Non_AE: {Non_AE}")
+                logger.info(f"n: {n}")
+                logger.info(f"robust reach: {robust_left} , {robust_right}")
+                logger.info(f"epsilon reach: {epsilon}")
+                print("*" * 120)
+                logger.info(f"*" * 120)
+                n += 1
             print("*" * 120)
             logger.info(f"*" * 120)
-            n += 1
-        print("*" * 120)
-        logger.info(f"*" * 120)
-        logger.info(f"robust = {robust_re}")
-        logger.info(f"epsilon = {epsilon_re}")
-        logger.info(f"stop_early = {efficient_n}")
-        logger.info(f"futility = {efficient_m}")
-        logger.info(f"Non_AE = {Non_AE}")
-        logger.info(f"n = {n}")
-        logger.info(f"AdvSt2i = {round(np.mean(AdvSt2i), 2)}")
-        logger.info(f"OriSt2i = {round(np.mean(ori_loss), 2)}")
-        logger.info(f"Levenshtein = {round(np.mean(L_distance), 2)}")
-        logger.info(f"robust = {robust_left} , {robust_right}")
-        logger.info(f"epsilon = {epsilon}")
+            logger.info(f"robust = {robust_re}")
+            logger.info(f"epsilon = {epsilon_re}")
+            logger.info(f"stop_early = {efficient_n}")
+            logger.info(f"futility = {efficient_m}")
+            logger.info(f"Non_AE = {Non_AE}")
+            logger.info(f"n = {n}")
+            logger.info(f"AdvSt2i = {round(np.mean(AdvSt2i), 2)}")
+            logger.info(f"OriSt2i = {round(np.mean(ori_loss), 2)}")
+            logger.info(f"Levenshtein = {round(np.mean(L_distance), 2)}")
+            logger.info(f"robust = {robust_left} , {robust_right}")
+            logger.info(f"epsilon = {epsilon}")
 
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-        hours, remainder = divmod(elapsed_time, 3600)
-        minutes, seconds = divmod(remainder, 60)
-        print(f"time cost: {int(hours)} hours, {int(minutes)} minutes, {int(seconds)} seconds")
-        logger.info(f"time cost: {int(hours)} hours, {int(minutes)} minutes, {int(seconds)} seconds")
-        logger.info(f"&" * 150)
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            hours, remainder = divmod(elapsed_time, 3600)
+            minutes, seconds = divmod(remainder, 60)
+            print(f"time cost: {int(hours)} hours, {int(minutes)} minutes, {int(seconds)} seconds")
+            logger.info(f"time cost: {int(hours)} hours, {int(minutes)} minutes, {int(seconds)} seconds")
+            logger.info(f"&" * 150)
+
