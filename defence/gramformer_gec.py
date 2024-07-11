@@ -1,12 +1,3 @@
-'''
-The Gramformer project for GEC
-
-https://github.com/PrithivirajDamodaran/Gramformer
-
-pip install -U git+https://github.com/PrithivirajDamodaran/Gramformer.git
-python -m spacy download en_core_web_sm
-
-'''
 from gramformer import Gramformer
 import torch
 from tqdm import tqdm

@@ -17,9 +17,9 @@ from textattack.transformations import CompositeTransformation
 from textattack.constraints.pre_transformation import RepeatModification
 from textattack.constraints.pre_transformation import StopwordModification
 from textattack.augmentation import Augmenter
-transformation = CompositeTransformation([WordSwapRandomCharacterInsertion(),WordSwapRandomCharacterSubstitution(),WordSwapRandomCharacterDeletion(),WordSwapNeighboringCharacterSwap(),WordSwapQWERTY()])
+# transformation = CompositeTransformation([WordSwapRandomCharacterInsertion(),WordSwapRandomCharacterSubstitution(),WordSwapRandomCharacterDeletion(),WordSwapNeighboringCharacterSwap(),WordSwapQWERTY()])
 # transformation = CompositeTransformation([WordSwapRandomCharacterSubstitution()])
-constraints = [RepeatModification()]
+constraints = [RepeatModification(), StopwordModification()]
 
 import pandas as pd
 import clip
