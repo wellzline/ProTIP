@@ -90,6 +90,7 @@ python version_defence.py
 <p align="center">
     <img src="docs/Effective.PNG" width="600px"/>
     <img src="docs/Efficiency.PNG" width="600px"/>
+    <img src="docs/efficiency_table.PNG" width="600px"/>
     <img src="docs/Defence.PNG" width="600px"/>
 </p>
 
