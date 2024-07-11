@@ -152,9 +152,8 @@ if __name__ == "__main__":
     origin_prompts = get_origin_prompt(origin_prompt_path) 
     for index, ori_prompt in origin_prompts.items():
         efficient_m, efficient_n = 0, 0
-        # AEdata_path = f"./generate_AE/coco/char_AE/result_{index}.csv"
-        AEdata_path = f"./dataset4AT/test_in_train/result_{index}.csv"
-        logger = setup_logger(f"adaptive_log/origin_result/10_rate/log_char_{index}.log")
+        AEdata_path = f"./generate_AE/coco/char_AE/result_{index}.csv"
+        logger = setup_logger(f"adaptive_log/10_rate/log_char_{index}.log")
         logger.info(f"sigma: {sigma}")
         logger.info(f"num_inference_steps: {num_inference_steps}")
         logger.info(f"num_batch: {num_batch}")
