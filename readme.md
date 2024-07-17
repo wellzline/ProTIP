@@ -3,6 +3,16 @@
 [![arXiv](https://img.shields.io/badge/arxiv-2402.15429-red)](https://arxiv.org/abs/2402.15429)
 [![poster]()
 
+> [Yi Zhang](https://scholar.google.com/citations?user=9E8XJ54AAAAJ&hl=en), [Xingyu Zhao*](https://scholar.google.com/citations?user=SzEBdA8AAAAJ&hl=en), [Yun Tang](https://scholar.google.com/citations?hl=en&user=idlExzkAAAAJ), [Wenjie Ruan](https://scholar.google.com/citations?user=VTASFGEAAAAJ&hl=en),
+[Xiaowei Huang](https://scholar.google.com/citations?user=X4fLCCIAAAAJ&hl=en),
+[Siddartha Khastgir](https://scholar.google.com/citations?hl=en&user=r3ldU6sAAAAJ),
+[Paul Jennings](https://scholar.google.com/citations?hl=en&user=HOVIdYwAAAAJ)
+>
+> *Corresponding Author
+
+We propose an efficient framework, ProTIP, to evaluate the probabilistic robustness of Text-to-Image diffusion model with statistical guarantees.
+
+
 ## Overview
 
 <p align="center">
