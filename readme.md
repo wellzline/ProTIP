@@ -9,6 +9,10 @@
     <img src="docs/Fig_Framework.png" width="600px"/>
 </p>
 
+## 🔥 News
+
+- [2024/7/1] Our work has been accepted by ECCV2024!
+
 ## Abstract
 Text-to-Image (T2I) Diffusion Models (DMs) have
 shown impressive abilities in generating high-quality images based on simple text descriptions. However, as is common with many Deep Learning (DL) models, DMs are subject to a lack of robustness.
