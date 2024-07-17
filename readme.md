@@ -105,7 +105,13 @@ python version_defence.py
 ## Citation
 If you find this repo useful, please cite:
 ```
-coming
+@article{zhang2024protip,
+  title={ProTIP: Probabilistic Robustness Verification on Text-to-Image Diffusion Models against Stochastic Perturbation},
+  author={Zhang, Yi and Tang, Yun and Ruan, Wenjie and Huang, Xiaowei and Khastgir, Siddartha and Jennings, Paul and Zhao, Xingyu},
+  booktitle={European Conference on Computer Vision},
+  year={2024},
+  organization={Springer}
+}
 ```
 
 ## Remark
