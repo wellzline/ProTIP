@@ -12,16 +12,16 @@
 
 We propose an efficient framework, ProTIP, to evaluate the probabilistic robustness of Text-to-Image diffusion model with statistical guarantees.
 
+## 🔥 News
+
+- [2024/7/1] Our work has been accepted by ECCV2024!
+
 
 ## Overview
 
 <p align="center">
     <img src="docs/Fig_Framework.png" width="600px"/>
 </p>
-
-## 🔥 News
-
-- [2024/7/1] Our work has been accepted by ECCV2024!
 
 ## Abstract
 Text-to-Image (T2I) Diffusion Models (DMs) have
