@@ -14,7 +14,7 @@ We propose an efficient framework, ProTIP, to evaluate the probabilistic robustn
 
 ## 🔥 News
 
-- [2024/7/1] Our work has been accepted by ECCV2024!
+- [2024/7/1] Our work has been accepted by The 18th European Conference on Computer Vision ECCV 2024!
 
 
 ## Overview
