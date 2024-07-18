@@ -10,7 +10,7 @@
 >
 > *Corresponding Author
 
-We propose an efficient framework, ProTIP, to evaluate the probabilistic robustness of Text-to-Image diffusion model with statistical guarantees.
+We propose an efficient framework, ProTIP, to evaluate the probabilistic robustness of Text-to-Image Diffusion Model with statistical guarantees.
 
 ## 🔥 News
 
