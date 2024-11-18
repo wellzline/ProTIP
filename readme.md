@@ -1,7 +1,7 @@
 # ProTIP: Probabilistic Robustness Verification on Text-to-Image Diffusion Models against Stochastic Perturbation
 [![paper]()](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/04783.pdf)
 [![arXiv](https://img.shields.io/badge/arxiv-2402.15429-red)](https://arxiv.org/abs/2402.15429)
-[![poster](https://eccv.ecva.net/media/PosterPDFs/ECCV%202024/1773.png?t=1726138137.830737)](https://eccv.ecva.net/virtual/2024/poster/1773)
+[![poster]()](https://eccv.ecva.net/virtual/2024/poster/1773)
 
 > [Yi Zhang](https://scholar.google.com/citations?user=9E8XJ54AAAAJ&hl=en), [Xingyu Zhao*](https://scholar.google.com/citations?user=SzEBdA8AAAAJ&hl=en), [Yun Tang](https://scholar.google.com/citations?hl=en&user=idlExzkAAAAJ), [Wenjie Ruan](https://scholar.google.com/citations?user=VTASFGEAAAAJ&hl=en),
 [Xiaowei Huang](https://scholar.google.com/citations?user=X4fLCCIAAAAJ&hl=en),
