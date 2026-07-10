@@ -20,7 +20,11 @@ We propose an efficient framework, ProTIP, to evaluate the probabilistic robustn
 ## Overview
 
 <p align="center">
-    <img src="docs/Fig_Framework.png" width="600px"/>
+    <img src="docs/poster.png" width="900px"/>
+</p>
+
+<p align="center">
+    <img src="docs/Fig_Framework.png" width="900px"/>
 </p>
 
 ## Abstract
